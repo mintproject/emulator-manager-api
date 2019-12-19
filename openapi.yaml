@@ -1,0 +1,298 @@
+---
+openapi: 3.0.2
+info:
+  title: emulator-manager
+  version: 1.0.0
+paths:
+  /threads:
+    summary: Path used to manage the list of threads.
+    description: The REST endpoint/path used to list and create zero or more `thread`
+      entities.  This path contains a `GET` and `POST` operation to perform the list
+      and create tasks, respectively.
+    get:
+      parameters:
+      - name: limit
+        description: ""
+        schema:
+          type: integer
+        in: query
+      - name: offset
+        description: ""
+        schema:
+          type: integer
+        in: query
+      - name: model
+        description: ""
+        schema:
+          type: string
+        in: query
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/thread'
+          description: Successful response - returns an array of `thread` entities.
+      operationId: getthreads
+      summary: List All threads
+      description: Gets a list of all `thread` entities.
+    post:
+      requestBody:
+        description: A new `thread` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/thread'
+        required: true
+      responses:
+        "201":
+          description: Successful response.
+      operationId: createthread
+      summary: Create a thread
+      description: Creates a new instance of a `thread`.
+  /threads/{threadId}:
+    summary: Path used to manage a single thread.
+    description: The REST endpoint/path used to get, update, and delete single instances
+      of an `thread`.  This path contains `GET`, `PUT`, and `DELETE` operations used
+      to perform the get, update, and delete tasks, respectively.
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/thread'
+          description: Successful response - returns a single `thread`.
+      operationId: getthread
+      summary: Get a thread
+      description: Gets the details of a single instance of a `thread`.
+    put:
+      requestBody:
+        description: Updated `thread` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/thread'
+        required: true
+      responses:
+        "202":
+          description: Successful response.
+      operationId: updatethread
+      summary: Update a thread
+      description: Updates an existing `thread`.
+    delete:
+      responses:
+        "204":
+          description: Successful response.
+      operationId: deletethread
+      summary: Delete a thread
+      description: Deletes an existing `thread`.
+    parameters:
+    - name: threadId
+      description: A unique identifier for a `thread`.
+      schema:
+        type: string
+      in: path
+      required: true
+  /scenarios:
+    summary: Path used to manage the list of scenarios.
+    description: The REST endpoint/path used to list and create zero or more `scenario`
+      entities.  This path contains a `GET` and `POST` operation to perform the list
+      and create tasks, respectively.
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/scenario'
+          description: Successful response - returns an array of `scenario` entities.
+      operationId: getscenarios
+      summary: List All scenarios
+      description: Gets a list of all `scenario` entities.
+    post:
+      requestBody:
+        description: A new `scenario` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scenario'
+        required: true
+      responses:
+        "201":
+          description: Successful response.
+      operationId: createscenario
+      summary: Create a scenario
+      description: Creates a new instance of a `scenario`.
+  /scenarios/{scenarioId}:
+    summary: Path used to manage a single scenario.
+    description: The REST endpoint/path used to get, update, and delete single instances
+      of an `scenario`.  This path contains `GET`, `PUT`, and `DELETE` operations
+      used to perform the get, update, and delete tasks, respectively.
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scenario'
+          description: Successful response - returns a single `scenario`.
+      operationId: getscenario
+      summary: Get a scenario
+      description: Gets the details of a single instance of a `scenario`.
+    put:
+      requestBody:
+        description: Updated `scenario` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/scenario'
+        required: true
+      responses:
+        "202":
+          description: Successful response.
+      operationId: updatescenario
+      summary: Update a scenario
+      description: Updates an existing `scenario`.
+    delete:
+      responses:
+        "204":
+          description: Successful response.
+      operationId: deletescenario
+      summary: Delete a scenario
+      description: Deletes an existing `scenario`.
+    parameters:
+    - name: scenarioId
+      description: A unique identifier for a `scenario`.
+      schema:
+        type: string
+      in: path
+      required: true
+  /problem_formulations:
+    summary: Path used to manage the list of problem_formulations.
+    description: The REST endpoint/path used to list and create zero or more `problem_formulation`
+      entities.  This path contains a `GET` and `POST` operation to perform the list
+      and create tasks, respectively.
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/problem_formulation'
+          description: Successful response - returns an array of `problem_formulation`
+            entities.
+      operationId: getproblem_formulations
+      summary: List All problem_formulations
+      description: Gets a list of all `problem_formulation` entities.
+    post:
+      requestBody:
+        description: A new `problem_formulation` to be created.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/problem_formulation'
+        required: true
+      responses:
+        "201":
+          description: Successful response.
+      operationId: createproblem_formulation
+      summary: Create a problem_formulation
+      description: Creates a new instance of a `problem_formulation`.
+  /problem_formulations/{problem_formulationId}:
+    summary: Path used to manage a single problem_formulation.
+    description: The REST endpoint/path used to get, update, and delete single instances
+      of an `problem_formulation`.  This path contains `GET`, `PUT`, and `DELETE`
+      operations used to perform the get, update, and delete tasks, respectively.
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/problem_formulation'
+          description: Successful response - returns a single `problem_formulation`.
+      operationId: getproblem_formulation
+      summary: Get a problem_formulation
+      description: Gets the details of a single instance of a `problem_formulation`.
+    put:
+      requestBody:
+        description: Updated `problem_formulation` information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/problem_formulation'
+        required: true
+      responses:
+        "202":
+          description: Successful response.
+      operationId: updateproblem_formulation
+      summary: Update a problem_formulation
+      description: Updates an existing `problem_formulation`.
+    delete:
+      responses:
+        "204":
+          description: Successful response.
+      operationId: deleteproblem_formulation
+      summary: Delete a problem_formulation
+      description: Deletes an existing `problem_formulation`.
+    parameters:
+    - name: problem_formulationId
+      description: A unique identifier for a `problem_formulation`.
+      schema:
+        type: string
+      in: path
+      required: true
+components:
+  schemas:
+    thread:
+      description: ""
+      type: object
+      properties:
+        id:
+          description: ""
+          type: string
+        text:
+          description: ""
+        time_period:
+          description: ""
+        indicators:
+          description: ""
+        models:
+          description: ""
+        datasets:
+          description: ""
+        results:
+          description: ""
+    scenario:
+      description: ""
+      type: object
+      properties:
+        id:
+          description: ""
+        text:
+          description: ""
+        region:
+          description: ""
+        subregion:
+          description: ""
+        time_period:
+          description: ""
+    problem_formulation:
+      description: ""
+      type: object
+      properties:
+        id:
+          description: ""
+        text:
+          description: ""
+        region:
+          description: ""
+        time_period:
+          description: ""
